@@ -3,15 +3,25 @@ collection of various R snippets for RNA diffseq analyses
 terminology:
 
 FDR:  False discovery rate
+
 GLM:  Generalized linear model
+
 HTS:  High-throughput sequencing
+
 LFC:  Logarithmic fold change
+
 MAP:  Maximum a posteriori
+
 MLE:  Maximum-likelihood estimate
+
 RNA-seq:  RNA sequencing
+
 VST:  Variance-stabilizing transformation
+
 BCV:  biological coefficient of variation 
+
 logCPM: log2 counts per million, normalized for library sizes
+
 PCA:  principal components analysis 
 
 lfcSE: log2 fold change Standard Error
@@ -25,9 +35,13 @@ the reduced model and the full model, which is compared to a chi-squared distrib
 baseMean = row means of normalized counts
 
 baseMean: The base mean (i.e., mean of the counts divided by the size factors) for the counts for both conditions
+
 foldChange: ratio meanB/meanA
+
 log2FoldChange: log2 of the fold change
+
 pval: p value for rejecting the null hypothesis 'meanA==meanB'
+
 padj: adjusted p values (adjusted with 'p.adjust( pval, method="BH")')
 
 DEsequ2: function DESeq runs the following functions in order:
