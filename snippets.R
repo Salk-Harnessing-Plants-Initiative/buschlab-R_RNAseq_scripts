@@ -1,4 +1,6 @@
 library(DESeq2)
+library(BiocParallel)
+library(parallel)
 
 # here starting with provided read counts matrix
 # adopt to your needs
@@ -18,10 +20,14 @@ sample<-as.matrix(inData)
 
 coldata <- data.frame(row.names=colnames(sample), conditions)
 dds <- DESeqDataSetFromMatrix(countData=sample, colData=coldata, design=~conditions)
-dds
 
-system.time(dds <- DESeq(dds))
+numCores <- detectCores(logical = TRUE) # use all available cores
+register(MulticoreParam(numCores))
+system.time(dds <- DESeq(dds, parallel=TRUE)) # now got mu and cooks 
 
+# alpha = padj (FDR) threshold (def: 0.1), lfcThreshold = log2 fold change threshold (def. 0)
+# system.time(res <- results(dds, alpha = 0.05, lfcThreshold = 0, parallel=TRUE))
+# summary(res)
 
 system.time(rld <- rlogTransformation(dds))
 head(assay(rld))
