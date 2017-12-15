@@ -80,7 +80,7 @@ finCol <- c(rep(mycols,3))
 
 scatterD3(x=myPCA$PC1, y=myPCA$PC2,xlab=paste0("PC1: ",percentVar[1],"% variance"),ylab = paste0("PC2: ", percentVar[2],"% variance"),
          tooltip_text = tooltips,
-         #col_var = mycols
+         col_var = myPCA$group, 
          lab = myPCA$name
           )
 
